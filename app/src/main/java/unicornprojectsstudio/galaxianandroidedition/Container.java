@@ -10,6 +10,7 @@ public class Container {
         private SortedArray<Ship> aiShips;
         private SortedArray<Projectile> projectiles;
         private SortedArray<Effect> effects;
+        private SortedArray<AnimatedLabelText> labels;
         private Renderer2D renderer;
         private SoundsManager audio;
         private Callback callback;
@@ -19,6 +20,20 @@ public class Container {
     /* end of declarations */
 
     public Container ( ) { }
+
+    /* Labels */
+
+        public SortedArray getLabels( )  {
+
+            return labels;
+
+        }
+
+        public void setLabes( SortedArray labels ) {
+
+            this.labels = labels;
+
+        }
 
     /* Context */
 
