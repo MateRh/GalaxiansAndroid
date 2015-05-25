@@ -17,8 +17,8 @@ public class GradientText {
 
         Shader myShader = new LinearGradient(
                 0, 0, 0, 100,
-                Color.WHITE, Color.BLACK,
-                Shader.TileMode.CLAMP );
+                new Color().rgb( 200, 200, 200 ), new Color().rgb( 75, 75, 75 ),
+                Shader.TileMode.MIRROR  );
 
         paint.setShader( myShader );
         paint.setShadowLayer( 20, 2, 2, Color.WHITE );

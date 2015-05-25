@@ -14,6 +14,7 @@ public class Renderer2D extends View {
     private SortedArray<Ship> aiShips;
     private SortedArray<Projectile> projectiles = new SortedArray<>();
     private SortedArray<Effect> effects = new SortedArray<>();
+    private SortedArray<AnimatedLabelText> labels;
     private GradientText score;
     private GradientText level;
     private int points = 0;
@@ -26,6 +27,7 @@ public class Renderer2D extends View {
         this.aiShips = container.getAiShips();
         this.projectiles = container.getProjectiles();
         this.effects = container.getEffects();
+        this.labels = container.getLabels();
 
         score = new GradientText( 32, Paint.Align.CENTER );
         level = new GradientText( 20, Paint.Align.LEFT );
@@ -40,6 +42,8 @@ public class Renderer2D extends View {
             }
         Variables.lastFrameTime = System.nanoTime();
         c.drawBitmap( texturesPool.getTexture( 0 ), 0, 0, null );
+
+
 
         Ship rShip;
             for ( int i = 0; i < aiShips.size() ; i++ ) {
@@ -68,9 +72,20 @@ public class Renderer2D extends View {
             c.drawBitmap( texturesPool.getTexture( 29 ), Variables.myshipSize + ( int ) ( Variables.myshipSize / 1.75 ) * i, 19, null );
         }
 
+        AnimatedLabelText labelText;
+        for ( int i = 0; i < labels.size() ; i++ ) {
+            labelText = labels.get( i );
+            c.drawText( labelText.getText(), labelText.getX(), labelText.getY(), labelText.getPaint() );
+            if ( labelText.getPaint().getAlpha() == 0 ) {
+                labels.remove( i );
+            }
+        }
+
         c.drawText( ""+aiShips.get( 0 ).getScore(), Variables.width/2, 40, score.getPaint() );
         c.drawText( "1-"+container.getCurrentLevel(), Variables.width - Variables.width/4, 37, level.getPaint() );
 
+
+        c.drawText( ""+Variables.wait, 25, 37, level.getPaint() );
         invalidate();
 
     }

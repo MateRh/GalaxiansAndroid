@@ -2,6 +2,7 @@ package unicornprojectsstudio.galaxianandroidedition;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Paint;
 import android.util.Log;
 
 import java.util.Timer;
@@ -32,6 +33,10 @@ public class Callback {
             SoundsManager soundsManager = container.getSoundsManager();
             soundsManager.play( 1 );
             aiShips.get( 0 ).setScore( 500 );
+
+            SortedArray<AnimatedLabelText> labels = container.getLabels();
+            labels.add( new AnimatedLabelText( (int)ship.getX(), (int)ship.getY(), "+500", 1000 ) );
+
             Log.v( "aiShips.size() ", " " + aiShips.size() );
                 if ( aiShips.size() == 2 ) {
                     container.setCurrentLevel( container.getCurrentLevel()+1 );

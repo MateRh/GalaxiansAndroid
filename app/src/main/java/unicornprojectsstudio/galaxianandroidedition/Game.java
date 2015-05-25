@@ -30,6 +30,7 @@ public class Game {
             container.setProjectiles( new SortedArray<>() );
             container.setEffects( new SortedArray<>() );
             container.setContext( context );
+            container.setLabes(  new SortedArray<AnimatedLabelText>()  );
 
         container.getAiShips().add( new Player( ( Variables.width - Variables.myshipSize * 4 ) / 2, Variables.height - 100, Variables.myshipSize, Variables.myshipSize, 27 ) );
         this.loadGameLevel();

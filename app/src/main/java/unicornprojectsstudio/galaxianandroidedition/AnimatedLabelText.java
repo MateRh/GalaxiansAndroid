@@ -11,14 +11,15 @@ import java.util.TimerTask;
 public class AnimatedLabelText {
     private int x, y, durration;
     private Paint paint;
+    private GradientText gradientText;
     String text;
 
-    public AnimatedLabelText( int x, int y, String text, int durration, final Paint paint  ) {
+    public AnimatedLabelText( int x, int y, String text, int durration  ) {
         this.x = x;
         this.y = y;
         this.text = text;
-        this.paint = new Paint( paint );
-
+        gradientText = new GradientText( 20, Paint.Align.LEFT );
+        paint = gradientText.getPaint();
         TimerTask task = new TimerTask( ) {
 
             public void run() {
